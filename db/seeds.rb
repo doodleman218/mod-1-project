@@ -5,7 +5,7 @@
 collection = GetVideoGames.get_games_info
 
 collection["results"].each do |game_info|
-  Game.create(name: game_info["name"], release_date: game_info["released"], system: "NES")
+  Game.create(name: game_info["name"], release_year: game_info["released"], system: "NES")
 end
 
 
