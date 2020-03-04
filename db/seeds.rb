@@ -4,6 +4,7 @@
 
 collection = GetVideoGames.get_games_info
 
+#results is from the collection file and is the array we want access to
 collection["results"].each do |game_info|
   Game.create(name: game_info["name"], release_year: game_info["released"], system: "NES")
 end
