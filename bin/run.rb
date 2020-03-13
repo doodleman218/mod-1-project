@@ -55,28 +55,29 @@ elsif user_option == "8"
   user_delete_selection = gets.chomp
   binding.pry
   def Owner.delete_user_listing(user_delete_selection)
-    if user_delete_selection == current_owner.listings.[0].game_id
+    #if user_delete_selection == current_owner.listings.[0].game_id
       # Game.find(id).name 
       # need to create a loop to go through listings
        #delete/destroy that selection
+       #Game.find_by(name:user_listing_title).id
 
  
     # if current_owner.id == user_delete_selection.owner_id
     #    Listing.delete(name:user_delete_selection).id
     # else
     #    "Sorry, bla bla bla"
-    end
+    #end
  end
 
 end
 
 # clear_screen
 
-display_options
-#puts "are we here"
-user_option = gets.chomp
-#puts "or here"
-clear_screen
+ display_options
+# #puts "are we here"
+ user_option = gets.chomp
+# #puts "or here"
+ clear_screen
 # puts "possibly here"
 end
 
