@@ -19,13 +19,12 @@ require 'net/http'
 
     
     def self.get_games_info
-      games_hash = JSON.parse(self.get_games)
-    # programs.collect do |program|
-    #   program["agency"]
-    
+      games_hash = JSON.parse(self.get_games)  
     end
 
-        #SNES GAMES LIST
+     
+
+    
     
     # URL = "https://api.rawg.io/api/games?platforms=79&page_size=40"
     # #49 is NES, 79 is SNES

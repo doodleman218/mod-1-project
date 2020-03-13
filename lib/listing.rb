@@ -4,18 +4,15 @@ class Listing < ActiveRecord::Base
 
 
     def to_s
-        "#{game_id}, $#{price}, #{owner_id}"
+        "#{game.name}, $#{price}, #{owner.name}"
     end
 
-    
+    #again, how does to_s come into play??
     def self.all_listings
         self.all
     end
     
-    def listing_names
-        
-
-    end
+    
     
     # def self.destroy_listing
     #   #lets user get rid of a listing
@@ -31,3 +28,13 @@ class Listing < ActiveRecord::Base
 
 
 end
+
+
+# def self.listing_names_collection
+    #    *****NOT NEEDED BUT A FUN EXERCISE TO EXPLORE LATER*****
+    #     listings = self.all
+    #     games = Game.all
+    #     listings_game_id = listings.collect{|id| id.game_id}
+
+    #     binding.pry
+    # end
