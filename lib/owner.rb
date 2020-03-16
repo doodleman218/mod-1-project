@@ -40,33 +40,50 @@ class Owner < ActiveRecord::Base
    end
 
    def self.show_user_listings(current_owner)
-       current_owner.listings
+      Owner.find(current_owner.id).listings 
+      #current_owner.listings WHY DOES THIS NOT WORK
    end
 
    def self.delete_user_listing(user_delete_selection)
-      if user_delete_selection == current_owner.listings.name
+      Listing.where(game_id: Game.find_by(name:user_delete_selection).id).destroy_all
+     
+      #user_delete_selection == current_owner.listings.name
          # need to create a loop to go through listings
          #delete/destroy that selection
-   
    
       # if current_owner.id == user_delete_selection.owner_id
       #    Listing.delete(name:user_delete_selection).id
       # else
       #    "Sorry, bla bla bla"
-      end
+      
    end
-   
-   # def self.destroy_listing(user_delete_title)
-   #    #   #lets user get rid of a listing
-   #    #   #enter on their listing id
-   #    #   #anyway to keep it from deleting other listings??
-   #    #   #if owner_id == listing owner_id
-   #    binding.pry
-   #    Listing.destroy(Game.find_by(name:user_delete_title).id)
-   # end
 
+   def self.user_listing_edit(user_edit_selection, current_owner)
+     selection = Listing.where(game_id: Game.find_by(name:user_edit_selection).id)
+     listing = selection.find do |listings|
+      listings.owner_id = current_owner.id
+     end
+     puts "Please enter the new price"
+     new_price = gets
+     listing.price = new_price
+     listing.save
+     clear_screen
+     puts "Your listing for #{user_edit_selection} has successfully been changed to $#{new_price}"
+   end
 
 
 
 end
 
+   #if user_delete_selection == current_owner.listings.[0].game_id
+      # Game.find(id).name 
+      # need to create a loop to go through listings
+       #delete/destroy that selection
+       #Game.find_by(name:user_listing_title).id
+
+ 
+    # if current_owner.id == user_delete_selection.owner_id
+    #    Listing.delete(name:user_delete_selection).id
+    # else
+    #    "Sorry, bla bla bla"
+    #end

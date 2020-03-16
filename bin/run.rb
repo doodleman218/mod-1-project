@@ -23,8 +23,8 @@ clear_screen
 
 while user_option != "exit"
     # clear_screen
-  if user_option == "1"
-    puts Game.display_all_games
+if user_option == "1"
+  puts Game.display_all_games
 elsif user_option == "2"
   puts "Please enter a name"
   user_game_name = gets.chomp
@@ -39,36 +39,29 @@ elsif user_option == "4"
   puts "Please enter the price"
   user_listing_price = gets
   Owner.create_listing(user_listing_price, user_listing_title, current_owner)
-  elsif user_option == "5"
-
-puts Owner.show_user_listings
+elsif user_option == "5"
+  puts Owner.show_user_listings(current_owner)
+  puts "Please type the game title of the listing you would like to edit the price of"
+  user_edit_selection = gets.chomp
+  Owner.user_listing_edit(user_edit_selection, current_owner)
 elsif user_option == "6"
-  puts Owner.list_of_owners
+  puts Owner.show_user_listings(current_owner)
+  puts "Please type the game title of the listing you would like to delete"
+  user_delete_selection = gets.chomp  
+  Owner.delete_user_listing(user_delete_selection)
+  clear_screen
+  puts "The '#{user_delete_selection}' listing has been deleted"
 elsif user_option == "7"
+  puts Owner.list_of_owners
+elsif user_option == "8"
   puts "Please enter an owners name"
   user_owner_selection = gets.chomp
   puts Owner.listings_from_owner_name(user_owner_selection)
-elsif user_option == "8"
+
   #binding.pry
-  puts Owner.show_user_listings(current_owner)
-  puts "Please type the game title of the listing you would like to delete"
-  user_delete_selection = gets.chomp
-  binding.pry
-  def Owner.delete_user_listing(user_delete_selection)
-    #if user_delete_selection == current_owner.listings.[0].game_id
-      # Game.find(id).name 
-      # need to create a loop to go through listings
-       #delete/destroy that selection
-       #Game.find_by(name:user_listing_title).id
 
+   
  
-    # if current_owner.id == user_delete_selection.owner_id
-    #    Listing.delete(name:user_delete_selection).id
-    # else
-    #    "Sorry, bla bla bla"
-    #end
- end
-
 end
 
 # clear_screen

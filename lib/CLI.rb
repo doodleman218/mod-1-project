@@ -5,9 +5,10 @@
     puts "2) Add Game to Database"
     puts "3) View All Listings"
     puts "4) Add Listing"
-    puts "5) Delete Listing"
-    puts "6) View All Owners"
-    puts "7) View Listings by Owner"
+    puts "5) Edit Listing Price"   
+    puts "6) Delete Listing"
+    puts "7) View All Owners"
+    puts "8) View Listings by Owner"
     puts "%%%%%%%%%%%%%%%%%%%%%%%%%%%"
   end
 
