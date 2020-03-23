@@ -30,8 +30,11 @@ class Owner < ActiveRecord::Base
       #   #user give owner name
       #   #returns all listings from that owner
       # name = self(:name)
+      if Owner.find_by(name: user_owner_selection).listings == []
+         puts "#{user_owner_selection} does not have any listings"
+      else
       Owner.find_by(name: user_owner_selection).listings   
-
+      end
 
    end
 
@@ -44,9 +47,13 @@ class Owner < ActiveRecord::Base
       #current_owner.listings WHY DOES THIS NOT WORK
    end
 
-   def self.delete_user_listing(user_delete_selection)
-      Listing.where(game_id: Game.find_by(name:user_delete_selection).id).destroy_all
+   def self.delete_user_listing(user_delete_selection, current_owner)
      
+      selection = Listing.where(game_id: Game.find_by(name:user_delete_selection).id)
+      listing = selection.find do |listings|
+         listings.owner_id == current_owner.id
+         end
+         listing.destroy
       #user_delete_selection == current_owner.listings.name
          # need to create a loop to go through listings
          #delete/destroy that selection
@@ -61,7 +68,7 @@ class Owner < ActiveRecord::Base
    def self.user_listing_edit(user_edit_selection, current_owner)
      selection = Listing.where(game_id: Game.find_by(name:user_edit_selection).id)
      listing = selection.find do |listings|
-      listings.owner_id = current_owner.id
+     listings.owner_id == current_owner.id
      end
      puts "Please enter the new price"
      new_price = gets

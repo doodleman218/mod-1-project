@@ -12,8 +12,6 @@ collection["results"].each do |game_info|
 end
 
 
-
-
 #self made data for project
 david = Owner.create(name: "David")
 mary = Owner.create(name: "Mary")

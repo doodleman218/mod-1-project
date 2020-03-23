@@ -15,7 +15,4 @@ class Game < ActiveRecord::Base
         self.all
     end
     
-    
-
-
 end
